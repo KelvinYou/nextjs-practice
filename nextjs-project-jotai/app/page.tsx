@@ -1,8 +1,17 @@
-import Image from 'next/image'
+"use client"
+import { useEffect, useState } from 'react';
 import { personalData } from '@/data/personalData';
 import Link from 'next/link';
+import ReactPDF, { PDFDownloadLink } from '@react-pdf/renderer';
+import PDFDocument from '@/components/PDFDocument';
 
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div>{personalData.greeting}</div>
@@ -23,13 +32,27 @@ export default function Home() {
           stroke="currentColor"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M17 8l4 4m0 0l-4 4m4-4H3"
           />
         </svg>
       </Link>
+
+      {isClient && (
+        <div className="pdf-viewer-container">
+          <ReactPDF.PDFViewer className="pdf-viewer">
+            <PDFDocument />
+          </ReactPDF.PDFViewer>
+        </div>
+      )}
+
+      <PDFDownloadLink document={<PDFDocument />} fileName="example.pdf">
+        {({ blob, url, loading, error }) =>
+          loading ? 'Generating PDF...' : 'Download PDF'
+        }
+      </PDFDownloadLink>
     </main>
-  )
+  );
 }
