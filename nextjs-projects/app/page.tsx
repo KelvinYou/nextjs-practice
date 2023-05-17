@@ -6,7 +6,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col">
-      <Link href="/projects">Projects</Link>
+      <div className="container mx-auto px-4">
+        Welcome to My Project
+      </div>
     </main>
   )
 }
