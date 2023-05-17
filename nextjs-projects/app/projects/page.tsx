@@ -1,5 +1,6 @@
 import { projects } from "@/data/data";
 import ProjectCard from '@/components/projects/ProjectCard';
+import Link from "next/link";
 
 const Projects = () => {
   return (
@@ -8,7 +9,7 @@ const Projects = () => {
         <div className="flex flex-wrap justify-center">
 
           {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
+            <ProjectCard key={index + project.name} project={project} />
           ))}
         </div>
       </div>
