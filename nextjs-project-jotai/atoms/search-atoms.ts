@@ -1,5 +1,5 @@
 import { projects } from "@/data/projects";
-import { Project } from "@/types/types";
+import { Project } from "@/data/projects";
 import { atom } from "jotai"
 
 export const inputAtom = atom<string>("")

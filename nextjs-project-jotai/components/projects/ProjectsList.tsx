@@ -1,4 +1,4 @@
-import { Project } from "@/types/types"
+import { Project } from "@/data/projects"
 
 import ProjectCard from "./ProjectCard"
 
