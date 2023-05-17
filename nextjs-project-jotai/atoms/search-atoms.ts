@@ -1,4 +1,4 @@
-import { projects } from "@/data/data";
+import { projects } from "@/data/projects";
 import { Project } from "@/types/types";
 import { atom } from "jotai"
 

@@ -1,6 +1,17 @@
 import React from "react";
 
-export type Category = "react" | "node" | "express" | "django" | "mongo";
+export type Category = 
+// frontend
+"ReactJS" | "NodeJS" | "ExpressJS" | "NextJS" | "Flutter" |
+
+// backend 
+"Spring" | "Firebase" |
+// css
+"Bootstrap" | "Material UI" | "Tailwind" | "Ant Design";
+
+
+export type Platform = 
+"Web" | "Android" | "IOS" | "Windows" | "Linux" | "MacOS";
 
 export interface Project {
   name: string;
@@ -10,5 +21,5 @@ export interface Project {
   github_url?: string;
   apk_url?: string;
   category: Category[];
-  key_techs: string[];
+  platform: Platform[];
 }
