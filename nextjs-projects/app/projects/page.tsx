@@ -1,8 +1,4 @@
-import Image from 'next/image'
-import Link from 'next/link'
-
 import { projects } from "@/data/data";
-import LinkButton from '@/components/projects/LinkButton';
 import ProjectCard from '@/components/projects/ProjectCard';
 
 const Projects = () => {
