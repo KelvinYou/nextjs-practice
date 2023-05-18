@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import './globals.css'
 import { Quicksand } from 'next/font/google'
 
@@ -15,6 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        <title>Portfolio | Kelvin</title>
+        <meta property="og:title" content="Portfolio | Kelvin" key="title" />
+      </Head>
       <body className={quicksand.className}>{children}</body>
     </html>
   )
