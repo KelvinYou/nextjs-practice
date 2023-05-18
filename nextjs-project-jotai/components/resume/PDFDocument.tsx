@@ -150,8 +150,30 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-  }
+  },
+  strengthTitle: {
+    color: "white",
+    fontSize: 11,
+    marginBottom: 2,
+    fontFamily: 'Quicksand',
+  },
+  strengthDescription: {
+    color: "white",
+    fontSize: 9,
+    marginBottom: 5,
+    fontFamily: 'Quicksand',
+  },
 });
+
+const StrengthBar = ({strength, description}: {strength: string, description: string}) => {
+  return (
+    <View>
+      <Text style={styles.strengthTitle}>{strength}</Text>
+      <Text style={styles.strengthDescription}>{description}</Text>
+    </View>
+  )
+}
+
 const DateRange = ({startAt, endAt}: {startAt: string, endAt: string}) => {
   const startAtDate = new Date(startAt);
   const endAtDate = new Date(endAt);
@@ -172,7 +194,7 @@ const ScoreBar = ({name, score}: {name: string, score: number}) => {
       <View style={styles.scoreView}>
         {Array.from({ length: 5 }).map((_, index) => (
           index <= score - 1? 
-          <View style={[styles.scoreItem, {backgroundColor: "white"}]} />
+          <View style={[styles.scoreItem, {backgroundColor: "lightgrey"}]} />
           : 
           <View style={[styles.scoreItem, {backgroundColor: "grey"}]} />
         ))}
@@ -185,7 +207,7 @@ const TitleBar = ({title, isLeft}: {title: string, isLeft: boolean}) => {
   return (
     <>
       <Text style={[styles.title, 
-        { color: isLeft ? "white": "black" }]}>
+        { color: isLeft ? "yellow": "grey" }]}>
         {title}
       </Text>
       <View
@@ -257,6 +279,9 @@ const PDFDocument = () => {
 
             <TitleBar title="Strengths" isLeft={true}/>
             
+            {personalData.strengths.map((strength, index) => (
+              <StrengthBar strength={strength.strength} description={strength.description} />
+            ))}
           </View>
   
           <View style={styles.rightColumn}>
