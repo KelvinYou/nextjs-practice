@@ -85,7 +85,7 @@ export const personalData = {
       companyUrl: "https://www.finexusgroup.com/",
       startAt: "2023-2-1",
       endAt: "2023-7-31",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet. Donec hendrerit libero eget est tempor, quis tempus arcu elementum. In elementum elit at dui tristique feugiat. Mauris convallis, mi at mattis malesuada, neque nulla volutpat dolor, hendrerit faucibus eros nibh ut nunc. Proin luctus urna id nunc sagittis dignissim. Sed in libero sed libero dictum dapibus. Vivamus fermentum est eget lorem aliquet, vel tempus metus dignissim. Donec risus arcu, tristique et sollicitudin blandit, iaculis ut nisl. Integer rutrum ultricies fringilla.",
+      description: "In the banking industry, we supply our regulatory solutions and assist many banks in meeting their regulatory reporting compliances to the Central Bank. The Central Bank will data-mine the tons of financial data collected from the industry and in-turn churn out meaningful information to formulate sound financial policies for the nation.",
       skills: ["ExpressJS", "ReactJS", "NextJS"]
     },
     {
@@ -94,7 +94,7 @@ export const personalData = {
       companyUrl: "https://www.techtics.io/",
       startAt: "2020-10-1",
       endAt: "2021-1-31",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet. Donec hendrerit libero eget est tempor, quis tempus arcu elementum. In elementum elit at dui tristique feugiat. Mauris convallis, mi at mattis malesuada, neque nulla volutpat dolor, hendrerit faucibus eros nibh ut nunc. Proin luctus urna id nunc sagittis dignissim. Sed in libero sed libero dictum dapibus. Vivamus fermentum est eget lorem aliquet, vel tempus metus dignissim. Donec risus arcu, tristique et sollicitudin blandit, iaculis ut nisl. Integer rutrum ultricies fringilla.",
+      description: "Techtics is an IT software house specialising in blockchain technology to provide new perspective & technologies to transform industries and business. Start from understanding & ideas to capital-raising, system building, creative designing and implementation.",
       skills: ["ExpressJS", "ReactJS", "Laravel"]
     }
   ],
@@ -133,8 +133,26 @@ export const personalData = {
     },
     {
       strength: "Love to Code",
-      description: "",
+      description: "Love exploring more best practices for my current code",
     }
+  ],
+  cocuriculars: [
+    {
+      title: "Chinese Language Society",
+      startAt: "2019-5-28",
+      endAt: "2023-7-31",
+      school: "Tunku Abdul Rahman University of Management and Technology",
+      schoolUrl: "https://tarc.edu.my/",
+      description: "Made friends and established connections with them, Learnt communication skills",
+    },
+    {
+      title: "Chess Club",
+      startAt: "2019-5-28",
+      endAt: "2023-7-31",
+      school: "Tunku Abdul Rahman University of Management and Technology",
+      schoolUrl: "https://tarc.edu.my/",
+      description: "Learnt how to solve chess tactics, Learnt time management.",
+    },
   ]
 };
 

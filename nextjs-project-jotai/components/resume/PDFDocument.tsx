@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   pic: {
-    width: 150,
-    height: 150,
+    width: 120,
+    height: 120,
     borderRadius: "100%",
   },
   
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
   },
   workCompanyName: {
     fontSize: 10,
+    marginRight: 5,
     textDecoration: "none",
     color: "#323b4c",
     fontFamily: 'Quicksand',
@@ -91,8 +92,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 3,
   },
+  workSecondRow: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  workDuration: {
+    fontSize: 10,
+    color: "#323b4c",
+    fontFamily: 'Quicksand',
+  },
   workDescription: {
-    fontSize: 8,
+    fontSize: 9,
     fontFamily: 'Quicksand',
     marginTop: 4,
     textAlign: "justify",
@@ -117,7 +127,59 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
   },
+  scoreContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingTop: 3,
+    paddingBottom: 3,
+  },
+  scoreName: {
+    color: "white",
+    fontSize: 10,
+    fontFamily: 'Quicksand',
+  },
+  scoreView: {
+    marginLeft: "auto",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  scoreItem: {
+    marginLeft: 2,
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+  }
 });
+const DateRange = ({startAt, endAt}: {startAt: string, endAt: string}) => {
+  const startAtDate = new Date(startAt);
+  const endAtDate = new Date(endAt);
+  
+  const startFormatted = startAtDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  const endFormatted = endAtDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  
+  const dateRange = `${startFormatted} - ${endFormatted}`;
+
+  return (
+    <Text style={styles.workDuration}>({dateRange})</Text>
+  )
+}
+const ScoreBar = ({name, score}: {name: string, score: number}) => {
+  return (
+    <View style={styles.scoreContainer}>
+      <Text style={styles.scoreName}>{name}</Text>
+      <View style={styles.scoreView}>
+        {Array.from({ length: 5 }).map((_, index) => (
+          index <= score - 1? 
+          <View style={[styles.scoreItem, {backgroundColor: "white"}]} />
+          : 
+          <View style={[styles.scoreItem, {backgroundColor: "grey"}]} />
+        ))}
+      </View>
+    </View>
+  )
+}
 
 const TitleBar = ({title, isLeft}: {title: string, isLeft: boolean}) => {
   return (
@@ -166,38 +228,66 @@ const PDFDocument = () => {
                 value={contact.value}/>
             ))}
 
-            <TitleBar title="Programming" isLeft={true}/>
+            <TitleBar title="Programming Languages" isLeft={true}/>
+            {personalData.programming.languages.map((language, index) => (
+              <ScoreBar 
+              key={index + language.language}
+              name={language.language} 
+              score={language.score}
+              />
+            ))}
+            
+            <TitleBar title="Frameworks" isLeft={true}/>
+            {personalData.programming.frameworks.map((framework, index) => (
+              <ScoreBar 
+              key={index + framework.framework}
+              name={framework.framework} 
+              score={framework.score}
+              />
+            ))}
 
-            <TitleBar title="Framework" isLeft={true}/>
+            <TitleBar title="Languages" isLeft={true}/>
+            {personalData.languages.map((language, index) => (
+              <ScoreBar 
+              key={index + language.language}
+              name={language.language} 
+              score={language.score}
+              />
+            ))}
 
-            <TitleBar title="Language" isLeft={true}/>
-
+            <TitleBar title="Strengths" isLeft={true}/>
+            
           </View>
   
           <View style={styles.rightColumn}>
             <Text style={styles.fullname}>{personalData.fullname}</Text>
             <Text style={styles.role}>{personalData.roles[0]}</Text>
-            <TitleBar title="Work Experience" isLeft={false}/>
+            <TitleBar title="Work Experiences" isLeft={false}/>
             {personalData.workExps.map((workExp, index) => (
               <View key={index} style={{ marginBottom: 10 }}>
                 <Text style={styles.workRole}>{workExp.role}</Text>
-                {workExp.companyUrl ?
-                  <Link style={styles.workCompanyName} src={workExp.companyUrl}>
+
+                <View style={styles.workSecondRow}>
+                  {workExp.companyUrl ?
+                    <Link style={styles.workCompanyName} src={workExp.companyUrl}>
+                      <Text style={styles.workCompanyName}>
+                        {workExp.companyName}
+                      </Text>
+                    </Link>
+                    :
                     <Text style={styles.workCompanyName}>
                       {workExp.companyName}
                     </Text>
-                  </Link>
-                  :
-                  <Text style={styles.workCompanyName}>
-                    {workExp.companyName}
-                  </Text>
-                }
+                  }
+                  <DateRange startAt={workExp.startAt} endAt={workExp.endAt} />
+                </View>
+                
                 
                 <Text style={styles.workDescription}>{workExp.description}</Text>
               </View>
             ))}
   
-            <TitleBar title="Education" isLeft={false}/>
+            <TitleBar title="Educations" isLeft={false}/>
             {personalData.educations.map((education, index) => (
               <View key={index} style={{ marginBottom: 10 }}>
                 <Text style={styles.workRole}>{education.title}</Text>
@@ -212,8 +302,31 @@ const PDFDocument = () => {
                     {education.school}
                   </Text>
                 }
+                  <DateRange startAt={education.startAt} endAt={education.endAt} />
                 
                 <Text style={styles.workDescription}>{education.description}</Text>
+              </View>
+            ))}
+
+            <TitleBar title="Co-curicular Activities" isLeft={false}/>
+            {personalData.cocuriculars.map((cocuricular, index) => (
+              <View key={index} style={{ marginBottom: 10 }}>
+                <Text style={styles.workRole}>{cocuricular.title}</Text>
+                  {cocuricular.schoolUrl ?
+                  <Link style={styles.workCompanyName} src={cocuricular.schoolUrl}>
+                    <Text style={styles.workCompanyName}>
+                      {cocuricular.school}
+                    </Text>
+                  </Link>
+                  :
+                  <Text style={styles.workCompanyName}>
+                    {cocuricular.school}
+                  </Text>
+                }
+
+                <DateRange startAt={cocuricular.startAt} endAt={cocuricular.endAt} />
+                
+                <Text style={styles.workDescription}>{cocuricular.description}</Text>
               </View>
             ))}
           </View>
