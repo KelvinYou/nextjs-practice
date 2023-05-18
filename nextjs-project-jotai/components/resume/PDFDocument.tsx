@@ -1,7 +1,7 @@
 // PDFDocument.js
 
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet, Font, Image } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Font, Image, Link } from '@react-pdf/renderer';
 
 import { personalData } from '@/data/personalData';
 
@@ -56,7 +56,9 @@ const styles = StyleSheet.create({
 });
 
 const PDFDocument = () => (
-  <Document title={`Kelvin - Resume`}>
+  <Document 
+  title={`Kelvin - Resume`} 
+  author={personalData.nickname} >
     <Page size="A4" style={styles.page}>
       <View style={styles.row}>
         <View style={styles.leftColumn}>
@@ -66,7 +68,17 @@ const PDFDocument = () => (
         </View>
 
         <View style={styles.rightColumn}>
-          <Text style={styles.title}>{personalData.fullname}</Text>
+          <Text style={styles.title}>Work Experience</Text>
+
+          {personalData.workExps.map((workExp, index) => (
+            <View>
+              <Text>{workExp.role}</Text>
+              <Text>{workExp.companyName}</Text>
+              <Text>{workExp.description}</Text>
+            </View>
+          ))}
+
+          <Text style={styles.title}>Education</Text>
         </View>
       </View>
     </Page>

@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>{personalData.greeting}</div>
+      <div>{personalData.nickname}</div>
       
       <div>{personalData.roles[0]}</div>
 
