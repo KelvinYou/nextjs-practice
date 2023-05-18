@@ -2,8 +2,6 @@
 import { useEffect, useState } from 'react';
 import { personalData } from '@/data/personalData';
 import Link from 'next/link';
-import ReactPDF, { PDFDownloadLink } from '@react-pdf/renderer';
-import PDFDocument from '@/components/PDFDocument';
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);

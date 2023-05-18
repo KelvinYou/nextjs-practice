@@ -5,3 +5,5 @@ export const personalData = {
   roles: ["Software Engineer", "Web & Mobile App Developer"],
   fullname: "Kelvin You Kok Eng"
 };
+
+export type fonts = 'Poppins' | 'Quicksand';
