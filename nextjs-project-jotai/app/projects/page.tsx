@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { useAtom, useAtomValue } from "jotai";
 import { filteredProjectsAtom, inputAtom } from "@/atoms/search-atoms";

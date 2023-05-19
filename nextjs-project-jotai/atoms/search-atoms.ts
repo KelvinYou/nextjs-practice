@@ -11,8 +11,10 @@ export const filteredProjectsAtom = atom((get) => {
   // If there is no input value, return all movies
   if (!inputValue) return get(projectsAtom)
 
+
   // If there is an input value, filter projects by title
   return get(projectsAtom).filter((project) =>
-    project.name.toLowerCase().includes(inputValue.toLowerCase())
+    `${project.name}, ${project.category.join(", ")}, ${project.platform.join(", ")}`
+    .toLowerCase().includes(inputValue.toLowerCase())
   )
 })

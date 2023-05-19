@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import PDFDocument from "@/components/resume/PDFDocument";
 import { useDocumentTitle } from "@/hooks";
 import ReactPDF from "@react-pdf/renderer";

@@ -1,14 +1,13 @@
 import React from "react";
 
-export type Category = 
+export type ProgrammingTool = 
 // frontend
-"ReactJS" | "NodeJS" | "ExpressJS" | "NextJS" | "Flutter" |
+"ReactJS" | "NodeJS" | "ExpressJS" | "NextJS" | "Flutter" | "ViteJS" |
 
 // backend 
 "Spring" | "Firebase" |
 // css
 "Bootstrap" | "Material UI" | "Tailwind" | "Ant Design";
-
 
 export type Platform = 
 "Web" | "Android" | "IOS" | "Windows" | "Linux" | "MacOS";
@@ -20,8 +19,9 @@ export interface Project {
   demo_url?: string;
   github_url?: string;
   apk_url?: string;
-  category: Category[];
+  programmingTool: ProgrammingTool[];
   platform: Platform[];
+  updatedDate: string;
 }
 
 export const projects: Project[] = [
@@ -31,8 +31,9 @@ export const projects: Project[] = [
       "A self-introduction website",
     image_path: "/assets/images/portfolio.jpeg",
     demo_url: "https://kelvinyou.vercel.app/",
-    category: ["ReactJS", "Bootstrap"],
+    programmingTool: ["ReactJS", "Bootstrap"],
     platform: ["Web"],
+    updatedDate: "2023-2-21"
   },
   { 
     name: "Travel Guide: Tour Guide App",
@@ -40,8 +41,9 @@ export const projects: Project[] = [
       "Mobile application created using Flutter with dart as programming language",
     image_path: "/assets/images/demo.jpg",
     github_url: "https://github.com/KelvinYou/fyp_tour_guide_app",
-    category: ["Flutter"],
+    programmingTool: ["Flutter"],
     platform: ["Android", "IOS"],
+    updatedDate: "2023-2-21"
   },
   { 
     name: "Restaurant UI",
@@ -49,7 +51,8 @@ export const projects: Project[] = [
       "Just to build an UI refer from Figma",
     image_path: "/assets/images/demo.jpg",
     demo_url: "https://restaurant-landing-kelvinyou.vercel.app/",
-    category: ["Flutter"],
+    programmingTool: ["ViteJS", "ReactJS"],
     platform: ["Web"],
+    updatedDate: "2023-2-21"
   },
 ];

@@ -25,12 +25,12 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
             {platform}
           </span>
         ))}
-        {project.category.map((category, techIndex) => (
+        {project.programmingTool.map((programmingTool, techIndex) => (
           <span
-            key={techIndex + category}
+            key={techIndex + programmingTool}
             className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
           >
-            {category}
+            {programmingTool}
           </span>
         ))}
       </div>

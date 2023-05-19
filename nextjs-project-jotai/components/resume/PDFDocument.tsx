@@ -195,7 +195,7 @@ const MarkdownBar = ({ portfolioUrl, modifiedDate }: { portfolioUrl: string, mod
       <Link src={portfolioUrl} style={[styles.markdownText, { marginBottom: 3, }]}>
         {portfolioUrl}
       </Link>
-      <Text style={styles.markdownText}>- Edited on {endFormatted} -</Text>
+      <Text style={styles.markdownText}>- Updated on {endFormatted} -</Text>
     </View>
   );
 }
