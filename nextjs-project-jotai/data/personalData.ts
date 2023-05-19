@@ -100,7 +100,7 @@ export const personalData = {
   ],
   educations: [
     {
-      title: "Bachelor of Software Engineer (Hons)",
+      title: "Bachelor of Software Engineering (Hons)",
       startAt: "2021-6-20",
       endAt: "2023-7-31",
       school: "Tunku Abdul Rahman University of Management and Technology",
