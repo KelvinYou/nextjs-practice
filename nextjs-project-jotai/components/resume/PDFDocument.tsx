@@ -164,7 +164,41 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontFamily: 'Quicksand',
   },
+  markdown: {
+    paddingTop: 80,
+  },
+  markdownText: {
+    fontSize: 10,
+    color: 'white',
+    fontFamily: 'Quicksand',
+    textAlign: 'center',
+    textDecoration: 'none'
+  },
 });
+
+const MarkdownBar = ({ portfolioUrl, modifiedDate }: { portfolioUrl: string, modifiedDate: string }) => {
+  const editedDate = new Date(modifiedDate);
+
+  const day = editedDate.getDate();
+  const year = editedDate.getFullYear();
+
+  const monthAbbreviation = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(editedDate);
+
+  const endFormatted = `${day} ${monthAbbreviation} ${year}`;
+
+  return (
+    <View style={styles.markdown}>
+      <View style={styles.separator}></View>
+      <Text style={styles.markdownText}>
+        More details on: 
+      </Text>
+      <Link src={portfolioUrl} style={[styles.markdownText, { marginBottom: 3, }]}>
+        {portfolioUrl}
+      </Link>
+      <Text style={styles.markdownText}>- Edited on {endFormatted} -</Text>
+    </View>
+  );
+}
 
 const StrengthBar = ({strength, description}: {strength: string, description: string}) => {
   return (
@@ -179,8 +213,8 @@ const DateRange = ({startAt, endAt}: {startAt: string, endAt: string}) => {
   const startAtDate = new Date(startAt);
   const endAtDate = new Date(endAt);
   
-  const startFormatted = startAtDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-  const endFormatted = endAtDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  const startFormatted = startAtDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  const endFormatted = endAtDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
   
   const dateRange = `${startFormatted} - ${endFormatted}`;
 
@@ -188,6 +222,7 @@ const DateRange = ({startAt, endAt}: {startAt: string, endAt: string}) => {
     <Text style={styles.workDuration}>({dateRange})</Text>
   )
 }
+
 const ScoreBar = ({name, score}: {name: string, score: number}) => {
   return (
     <View style={styles.scoreContainer}>
@@ -234,7 +269,7 @@ const ContactBar = ({iconSrc, value}: {iconSrc: string, value: string}) => {
 const PDFDocument = () => {
   return (
     <Document 
-    title={`Kelvin - Resume`} 
+    title={`Resume | Kelvin`} 
     author={personalData.nickname} >
       <Page size="A4" style={styles.page}>
         <View style={styles.row}>
@@ -287,6 +322,12 @@ const PDFDocument = () => {
                 description={strength.description} 
               />
             ))}
+
+            <MarkdownBar 
+              portfolioUrl={personalData.portfolio.url}
+              modifiedDate={personalData.ModifiedDate}
+            />
+            
           </View>
   
           <View style={styles.rightColumn}>

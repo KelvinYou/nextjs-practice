@@ -5,8 +5,13 @@ import { filteredProjectsAtom, inputAtom } from "@/atoms/search-atoms";
 import SearchClient from "@/components/search/search-client";
 import ProjectsList from "@/components/projects/ProjectsList";
 import Link from "next/link";
+import { useDocumentTitle } from "@/hooks";
+
+
 
 const Projects = () => {
+  useDocumentTitle("Projects | Kelvin");
+  
   const [inputValue, setInputValue] = useAtom(inputAtom)
   const projects = useAtomValue(filteredProjectsAtom)
 

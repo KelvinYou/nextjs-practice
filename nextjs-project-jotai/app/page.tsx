@@ -1,15 +1,13 @@
-"use client"
-import { useEffect, useState } from 'react';
 import { personalData } from '@/data/personalData';
 import Link from 'next/link';
 
+export const metadata = {
+  title: "Portfolio | Kelvin",
+  description: "A simple web page to show projects & resume",
+};
+
 export default function Home() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
+  
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div>{personalData.nickname}</div>

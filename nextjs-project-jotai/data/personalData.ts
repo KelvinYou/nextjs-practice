@@ -4,6 +4,9 @@ export const personalData = {
   nickname: "Kelvin You",
   fullname: "Kelvin You Kok Eng",
   roles: ["Software Engineer", "Web & Mobile App Developer"],
+  portfolio: {
+    url: 'https://kelvinyou.vercel.app/',
+  },
   contacts: [
     {
       type: 'location',
@@ -159,6 +162,7 @@ export const personalData = {
       schoolUrl: "https://tarc.edu.my/",
       description: "Learnt how to solve chess tactics, Learnt time management.",
     },
-  ]
+  ],
+  ModifiedDate: "2023-5-19",
 };
 
