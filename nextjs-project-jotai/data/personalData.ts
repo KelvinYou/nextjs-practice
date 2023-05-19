@@ -62,10 +62,12 @@ export const personalData = {
     frameworks: [
       {
         framework: "ReactJS",
+        version: "18",
         score: 5,
       },
       {
         framework: "NextJS",
+        version: "13",
         score: 5,
       },
       {
@@ -74,6 +76,10 @@ export const personalData = {
       },
       {
         framework: "ExpressJS",
+        score: 3,
+      },
+      {
+        framework: "Spring Boot",
         score: 3,
       },
     ],

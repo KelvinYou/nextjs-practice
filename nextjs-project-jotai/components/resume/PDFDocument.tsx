@@ -153,13 +153,14 @@ const styles = StyleSheet.create({
   },
   strengthTitle: {
     color: "white",
-    fontSize: 11,
+    fontSize: 12,
+    fontWeight: 'bold',
     marginBottom: 2,
     fontFamily: 'Quicksand',
   },
   strengthDescription: {
     color: "white",
-    fontSize: 9,
+    fontSize: 8,
     marginBottom: 5,
     fontFamily: 'Quicksand',
   },
@@ -207,7 +208,7 @@ const TitleBar = ({title, isLeft}: {title: string, isLeft: boolean}) => {
   return (
     <>
       <Text style={[styles.title, 
-        { color: isLeft ? "yellow": "grey" }]}>
+        { color: isLeft ? "grey": "grey" }]}>
         {title}
       </Text>
       <View
@@ -280,7 +281,11 @@ const PDFDocument = () => {
             <TitleBar title="Strengths" isLeft={true}/>
             
             {personalData.strengths.map((strength, index) => (
-              <StrengthBar strength={strength.strength} description={strength.description} />
+              <StrengthBar 
+                key={index + strength.strength}
+                strength={strength.strength} 
+                description={strength.description} 
+              />
             ))}
           </View>
   
@@ -316,19 +321,27 @@ const PDFDocument = () => {
             {personalData.educations.map((education, index) => (
               <View key={index} style={{ marginBottom: 10 }}>
                 <Text style={styles.workRole}>{education.title}</Text>
-                {education.schoolUrl ?
-                  <Link style={styles.workCompanyName} src={education.schoolUrl}>
+                  {education.schoolUrl ?
+                    <Link style={styles.workCompanyName} src={education.schoolUrl}>
+                      <Text style={styles.workCompanyName}>
+                        {education.school}
+                      </Text>
+                    </Link>
+                    :
                     <Text style={styles.workCompanyName}>
                       {education.school}
                     </Text>
-                  </Link>
-                  :
-                  <Text style={styles.workCompanyName}>
-                    {education.school}
-                  </Text>
-                }
+                  }
+
+                  
+                  
                   <DateRange startAt={education.startAt} endAt={education.endAt} />
-                
+
+                  {education.grade && 
+                    <Text style={styles.workCompanyName}>
+                      CGPA: {education.grade}
+                    </Text>
+                  }
                 <Text style={styles.workDescription}>{education.description}</Text>
               </View>
             ))}
