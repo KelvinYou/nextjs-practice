@@ -2,15 +2,21 @@ import React from "react";
 
 export type ProgrammingTool = 
 // frontend
-"ReactJS" | "NodeJS" | "ExpressJS" | "NextJS" | "Flutter" | "ViteJS" |
+"ReactJS" | "NodeJS" | "NextJS" | "Flutter" | "ViteJS" |
 
 // backend 
-"Spring" | "Firebase" |
+"Spring" | "Firebase" | "ExpressJS" | "PuppeteerJS" | 
+
 // css
-"Bootstrap" | "Material UI" | "Tailwind" | "Ant Design";
+"Bootstrap" | "Material UI" | "Tailwind CSS" | "Ant Design";
+
+
+
 
 export type Platform = 
 "Web" | "Android" | "IOS" | "Windows" | "Linux" | "MacOS";
+
+
 
 export interface Project {
   name: string;

@@ -55,7 +55,7 @@ export const personalData = {
       },
       {
         language: "Java",
-        score: 5,
+        score: 4,
       },
       {
         language: "Scss",
@@ -82,7 +82,7 @@ export const personalData = {
         score: 3,
       },
       {
-        framework: "Spring Boot",
+        framework: "SSM (Spring, Spring Boot, MyBatis)",
         score: 3,
       },
     ],
@@ -142,7 +142,11 @@ export const personalData = {
     },
     {
       strength: "Love to Code",
-      description: "Love exploring more best practices for my current code",
+      description: "Love exploring more best practice, problem solving, clean code, code structure",
+    },
+    {
+      strength: "New Tech Lover",
+      description: "Love to spend my free time to catch up with new technology",
     }
   ],
   cocuriculars: [
