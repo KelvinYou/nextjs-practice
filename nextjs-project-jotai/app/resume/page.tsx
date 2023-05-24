@@ -10,9 +10,9 @@ const Resume = () => {
   return (
     <>
       <div className="pdf-viewer-container">
-        {/* <ReactPDF.PDFViewer className="pdf-viewer">
+        <ReactPDF.PDFViewer className="pdf-viewer">
           <PDFDocument />
-        </ReactPDF.PDFViewer> */}
+        </ReactPDF.PDFViewer>
       </div>
     </>
   )
