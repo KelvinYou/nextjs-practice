@@ -291,15 +291,6 @@ const PDFDocument = () => {
                 iconSrc={contact.icon} 
                 value={contact.value}/>
             ))}
-
-            <TitleBar title="Programming Languages" isLeft={true}/>
-            {personalData.programming.languages.map((language, index) => (
-              <ScoreBar 
-              key={index + language.language}
-              name={language.language} 
-              score={language.score}
-              />
-            ))}
             
             <TitleBar title="Frameworks" isLeft={true}/>
             {personalData.programming.frameworks.map((framework, index) => (
@@ -307,6 +298,15 @@ const PDFDocument = () => {
               key={index + framework.framework}
               name={framework.framework} 
               score={framework.score}
+              />
+            ))}
+
+            <TitleBar title="Programming Languages" isLeft={true}/>
+            {personalData.programming.languages.map((language, index) => (
+              <ScoreBar 
+              key={index + language.language}
+              name={language.language} 
+              score={language.score}
               />
             ))}
 

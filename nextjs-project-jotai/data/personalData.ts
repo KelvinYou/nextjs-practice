@@ -115,7 +115,7 @@ export const personalData = {
       school: "Tunku Abdul Rahman University of Management and Technology",
       schoolUrl: "https://tarc.edu.my/",
       grade: 3.72,
-      description: "Taken core courses for software development such as Data Structure and Algorithm, Human-Computer Interaction, Agile Methodology Development. Exposed to technologies such as Mobile Application Development, Graphics Programming, Data Science through elective courses."
+      description: "Taken core courses for software development such as Data Structure and Algorithm, Human-Computer Interaction, Agile Methodology Development. Exposed to technologies such as Mobile Application Development, Graphics Programming, Data Science through elective courses.",
     },
     {
       title: "Diploma in Computer Science",
@@ -132,7 +132,7 @@ export const personalData = {
       endAt: "2018-12-6",
       school: "SMK Taman Desa",
       schoolUrl: "https://ms.wikipedia.org/wiki/Sekolah_Menengah_Kebangsaan_Taman_Desa,_Bandar_Country_Homes",
-      description: "Pure science class, studied Chinese, Malay, English, maths, moral, sejarah, biology, chemistry, physic and add maths"
+      description: "Pure science class, studied Chinese, Malay, English, Maths, Moral, Sejarah, Biology, Chemistry, Physic and Add Maths"
     },
   ],
   strengths: [
