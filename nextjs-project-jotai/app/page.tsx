@@ -58,7 +58,6 @@ export default function Home() {
           />
         </svg>
       </Link>
-
       
     </main>
   );

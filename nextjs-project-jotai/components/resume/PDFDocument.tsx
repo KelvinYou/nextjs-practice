@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   },
   strengthTitle: {
     color: "white",
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: 'bold',
     marginBottom: 2,
     fontFamily: 'Quicksand',
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Quicksand',
   },
   markdown: {
-    paddingTop: 65,
+    paddingTop: 25,
   },
   markdownText: {
     fontSize: 10,
@@ -174,6 +174,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     textDecoration: 'none'
   },
+  scoreNameContainer: {
+    width: 120,
+  }
 });
 
 const MarkdownBar = ({ portfolioUrl, modifiedDate }: { portfolioUrl: string, modifiedDate: string }) => {
@@ -226,7 +229,10 @@ const DateRange = ({startAt, endAt}: {startAt: string, endAt: string}) => {
 const ScoreBar = ({name, score}: {name: string, score: number}) => {
   return (
     <View style={styles.scoreContainer}>
-      <Text style={styles.scoreName}>{name}</Text>
+      <View style={styles.scoreNameContainer}>
+        <Text style={styles.scoreName}>{name}</Text>
+
+      </View>
       <View style={styles.scoreView}>
         {Array.from({ length: 5 }).map((_, index) => (
           index <= score - 1? 
