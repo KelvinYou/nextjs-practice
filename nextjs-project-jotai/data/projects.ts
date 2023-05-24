@@ -28,9 +28,9 @@ export interface Project {
   demo_url?: string;
   github_url?: string;
   apk_url?: string;
-  programmingTools?: ProgrammingTool[];
-  programmingLanguages?: string[];
-  platforms?: Platform[];
+  programmingTools: ProgrammingTool[];
+  programmingLanguages: string[];
+  platforms: Platform[];
   updatedDate: string;
 }
 
@@ -39,9 +39,10 @@ export const projects: Project[] = [
     name: "Portfolio v1",
     description:
       "A self-introduction website",
-    image_path: "/assets/images/portfolio.jpeg",
+    image_path: "/assets/images/projects/portfolio.jpeg",
     demo_url: "https://kelvinyou.vercel.app/",
     programmingTools: ["ReactJS", "Bootstrap"],
+    programmingLanguages: [],
     platforms: ["Web"],
     updatedDate: "2023-2-14"
   },
@@ -52,6 +53,7 @@ export const projects: Project[] = [
     image_path: "/assets/images/demo.jpg",
     github_url: "https://github.com/KelvinYou/fyp_tour_guide_app",
     programmingTools: ["Flutter"],
+    programmingLanguages: [],
     platforms: ["Android", "IOS"],
     updatedDate: "2022-12-17"
   },
@@ -59,9 +61,10 @@ export const projects: Project[] = [
     name: "Restaurant UI",
     description:
       "Just to build an UI refer from Figma",
-    image_path: "/assets/images/restaurant.jpeg",
+    image_path: "/assets/images/projects/restaurant.jpeg",
     demo_url: "https://restaurant-landing-kelvinyou.vercel.app/",
     programmingTools: ["ViteJS", "ReactJS"],
+    programmingLanguages: [],
     platforms: ["Web"],
     updatedDate: "2023-2-21"
   },
@@ -84,15 +87,18 @@ export const projects: Project[] = [
     github_url: "https://github.com/KelvinYou/dspc-assignment",
     programmingTools: ["Jupyter Notebook"],
     programmingLanguages: ["Python"],
+    platforms: [],
     updatedDate: "2022-9-23"
   },
   { 
     name: "Donation System",
     description:
       "An assignment for the Data Structures and Algorithms course, create adt using doubly linked list",
-    image_path: "/assets/images/demo.jpg",
+    image_path: "/assets/images/projects/dsa.jpeg",
     github_url: "https://github.com/KelvinYou/dspc-assignment",
+    programmingTools: [],
     programmingLanguages: ["Java"],
+    platforms: [],
     updatedDate: "2022-9-9"
   },
 ];

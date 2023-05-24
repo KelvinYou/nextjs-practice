@@ -49,7 +49,24 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{project.name}</div>
         <p className="text-gray-700 text-base">{project.description}</p>
-        <p className="text-black text-base mt-4 font-medium">Updated on: {project.updatedDate}</p>
+        <div className="flex items-center gap-1 text-gray-500 mt-5">
+          <svg
+            className="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+
+          <p className="text-sm font-semibold text-black">{project.updatedDate}</p>
+        </div>
       </div>
 
       <div className="px-6 pb-4 flex flex-wrap justify-center">

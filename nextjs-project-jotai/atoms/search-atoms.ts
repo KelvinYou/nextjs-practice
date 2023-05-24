@@ -14,7 +14,8 @@ export const filteredProjectsAtom = atom((get) => {
 
   // If there is an input value, filter projects by title
   return get(projectsAtom).filter((project) =>
-    `${project.name}, ${project.programmingTool.join(", ")}, ${project.platform.join(", ")}`
+    `${project.name}, ${project.description}, ${project.programmingTools.join(", ")}, 
+    ${project.programmingLanguages.join(", ")}, ${project.platforms.join(", ")}`
     .toLowerCase().includes(inputValue.toLowerCase())
   )
 })
