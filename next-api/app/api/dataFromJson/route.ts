@@ -1,7 +1,18 @@
 import { promises as fs } from 'fs';
 import { cookies } from 'next/headers';
+const DATA_FOLDER = './data';
 
-const DATA_FOLDER = './data'; // Folder path to store the data
+export async function readData(fileName: string) {
+  try {
+    const filePath = `${DATA_FOLDER}/${fileName}`;
+    const fileData = await fs.readFile(filePath, 'utf8');
+    console.info("fileData: " + fileData);
+    return fileData;
+  } catch (error) {
+    console.error('Error reading data:', error);
+    throw new Error('Error reading data');
+  }
+}
 
 export async function POST(request: Request) {
   const cookieStore = cookies();
@@ -9,24 +20,9 @@ export async function POST(request: Request) {
 
   const body = await request.json();
 
-  const data = {
-    message: 'Hello, Next.js!',
-    token: token,
-    data: body
-  };
+  const fileName = body["fileName"];
 
-  const jsonData = JSON.stringify(data);
-  const fileName = `data-${Date.now()}.json`; // Generate a unique filename
-
-  try {
-    await fs.mkdir(DATA_FOLDER, { recursive: true }); // Create the folder if it doesn't exist
-    await fs.writeFile(`${DATA_FOLDER}/${fileName}`, jsonData); // Write the data to a file
-  } catch (error) {
-    console.error('Error writing data:', error);
-    return new Response('Error writing data', { status: 500 });
-  }
-
-  const jsonResponse = JSON.stringify({ success: true, fileName: fileName });
+  const jsonResponse = await readData(fileName);
 
   return new Response(jsonResponse, {
     status: 200,
