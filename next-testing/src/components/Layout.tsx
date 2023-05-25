@@ -8,7 +8,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   
   return (
     <div>
-      <Navbar onMenuButtonClick={() => setSidebarOpen((prev) => !prev)}/>
+      <Navbar 
+      sidebarOpen={sidebarOpen}
+      onMenuButtonClick={() => setSidebarOpen((prev) => !prev)}
+      />
 
       <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
 
