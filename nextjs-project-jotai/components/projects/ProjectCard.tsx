@@ -17,7 +17,8 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
         />
       </div>
       <div className="px-6 pt-4 pb-2">
-        {project.platform.map((platform, techIndex) => (
+        {project.platforms && 
+        project.platforms.map((platform, techIndex) => (
           <span
             key={techIndex + platform}
             className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
@@ -25,7 +26,8 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
             {platform}
           </span>
         ))}
-        {project.programmingTool.map((programmingTool, techIndex) => (
+        {project.programmingTools && 
+        project.programmingTools.map((programmingTool, techIndex) => (
           <span
             key={techIndex + programmingTool}
             className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
@@ -33,11 +35,38 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
             {programmingTool}
           </span>
         ))}
+        {project.programmingLanguages && 
+        project.programmingLanguages.map((programmingLanguage, techIndex) => (
+          <span
+            key={techIndex + programmingLanguage}
+            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+          >
+            {programmingLanguage}
+          </span>
+        ))}
       </div>
 
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{project.name}</div>
         <p className="text-gray-700 text-base">{project.description}</p>
+        <div className="flex items-center gap-1 text-gray-500 mt-5">
+          <svg
+            className="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+
+          <p className="text-sm font-semibold text-black">{project.updatedDate}</p>
+        </div>
       </div>
 
       <div className="px-6 pb-4 flex flex-wrap justify-center">
