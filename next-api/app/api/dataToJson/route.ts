@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     data: body
   };
 
-  const jsonData = JSON.stringify(data);
+  const jsonData = JSON.stringify(data, null, 2);
   const fileName = `data-${Date.now()}.json`; // Generate a unique filename
 
   try {

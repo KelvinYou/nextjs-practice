@@ -53,13 +53,13 @@ export async function POST(request: Request) {
       existingData.push(data);
     }
 
-    await fs.writeFile(filePath, JSON.stringify(existingData)); // Write the updated data to the file
+    await fs.writeFile(filePath, JSON.stringify(existingData, null, 2)); // Write the updated data to the file
   } catch (error) {
     console.error('Error writing data:', error);
     return new Response('Error writing data', { status: 500 });
   }
 
-  const jsonResponse = JSON.stringify({ success: true, data: data });
+  const jsonResponse = JSON.stringify({ success: true, data: data }, null, 2);
 
   return new Response(jsonResponse, {
     status: 200,
