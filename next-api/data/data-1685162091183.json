@@ -1,0 +1,11 @@
+{
+  "message": "Hello, Next.js!",
+  "token": {
+    "name": "token",
+    "value": "undefined",
+    "path": "/"
+  },
+  "data": {
+    "hi": "hi"
+  }
+}
