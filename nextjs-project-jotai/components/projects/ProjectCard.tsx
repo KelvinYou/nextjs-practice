@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import LinkButton from "./LinkButton";
 import { Project } from "@/data/projects";
+import Image from "next/image";
 
 interface ProjectCardProps {
   project: Project;
@@ -10,10 +11,12 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg mx-4 my-4">
       <div className="w-full" style={{ height: "200px" }}>
-        <img
+        <Image
           className="object-cover w-full h-full"
           src={project.image_path}
           alt={project.name}
+          width={200}
+          height={200}
         />
       </div>
       <div className="px-6 pt-4 pb-2">
