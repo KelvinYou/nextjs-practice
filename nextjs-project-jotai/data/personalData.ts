@@ -57,10 +57,6 @@ export const personalData = {
         language: "Java",
         score: 4,
       },
-      {
-        language: "Scss",
-        score: 4,
-      },
     ],
     frameworks: [
       {

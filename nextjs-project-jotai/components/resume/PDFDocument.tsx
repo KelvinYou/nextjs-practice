@@ -329,10 +329,10 @@ const PDFDocument = () => {
               />
             ))}
 
-            <MarkdownBar 
+            {/* <MarkdownBar 
               portfolioUrl={personalData.portfolio.url}
               modifiedDate={personalData.ModifiedDate}
-            />
+            /> */}
             
           </View>
   
