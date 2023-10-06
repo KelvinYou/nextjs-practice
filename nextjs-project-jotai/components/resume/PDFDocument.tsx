@@ -236,9 +236,9 @@ const ScoreBar = ({name, score}: {name: string, score: number}) => {
       <View style={styles.scoreView}>
         {Array.from({ length: 5 }).map((_, index) => (
           index <= score - 1? 
-          <View style={[styles.scoreItem, {backgroundColor: "lightgrey"}]} />
+          <View key={index} style={[styles.scoreItem, {backgroundColor: "lightgrey"}]} />
           : 
-          <View style={[styles.scoreItem, {backgroundColor: "grey"}]} />
+          <View key={index} style={[styles.scoreItem, {backgroundColor: "grey"}]} />
         ))}
       </View>
     </View>
