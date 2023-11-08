@@ -1,14 +1,15 @@
-import PDFDocument from "@/app/resume/PDFDocument";
-import ReactPDF, { PDFViewer } from "@react-pdf/renderer";
-import dynamic from "next/dynamic";
+"use client"
+
 import React from "react";
-import { Document, Page } from "react-pdf";
-import MyResume from "./MyResume";
+import MyResume, { DownloadPdfButton } from "./MyResume";
 
 const Resume = () => {
   return (
     <>
-      <div className="h-screen">
+      <div className="h-[80px]">
+        <DownloadPdfButton />
+      </div>
+      <div className="h-[calc(100vh-80px)]">
         <MyResume />
       </div>
     </>

@@ -1,7 +1,9 @@
 "use client";
 
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react"
+import PDFDocument from "./PDFDocument";
 
 
 const MyResume = () => {
@@ -17,6 +19,16 @@ const MyResume = () => {
 
   return(
     <Resume />
+  )
+}
+
+export const DownloadPdfButton = () => {
+  const Download = dynamic(() => import("./pdfdownload"), {
+    ssr: false,
+  });
+
+  return (
+    <Download />
   )
 }
 
