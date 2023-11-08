@@ -5,12 +5,6 @@ import { useState, useEffect } from "react";
 import PDFDocument from './PDFDocument';
 
 const PdfView = () => {
-  // const [client, setClient] = useState(false)
-
-  // useEffect(() => {
-  //     setClient(true)
-  // }, [])
-
   return (
     <PDFViewer className="pdf-viewer">
       <PDFDocument />

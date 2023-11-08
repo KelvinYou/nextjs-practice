@@ -6,7 +6,6 @@ import { Document, Page } from "react-pdf";
 import MyResume from "./MyResume";
 
 const Resume = () => {
-
   return (
     <>
       <div className="h-screen">

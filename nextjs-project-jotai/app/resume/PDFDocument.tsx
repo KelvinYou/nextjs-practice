@@ -2,6 +2,7 @@ import React from 'react';
 import ReactPDF, { Document, Page, Text, View, StyleSheet, Font, Image, Link } from '@react-pdf/renderer';
 
 import { personalData } from '@/data/personalData';
+import { formatDate } from '@/utils/dateUtil';
 
 
 Font.register({
@@ -185,9 +186,7 @@ const MarkdownBar = ({ portfolioUrl, modifiedDate }: { portfolioUrl: string, mod
   const day = editedDate.getDate();
   const year = editedDate.getFullYear();
 
-  const monthAbbreviation = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(editedDate);
-
-  const endFormatted = `${day} ${monthAbbreviation} ${year}`;
+  const endFormatted = formatDate(modifiedDate);
 
   return (
     <View style={styles.markdown}>
@@ -213,11 +212,9 @@ const StrengthBar = ({strength, description}: {strength: string, description: st
 }
 
 const DateRange = ({startAt, endAt}: {startAt: string, endAt: string}) => {
-  const startAtDate = new Date(startAt);
-  const endAtDate = new Date(endAt);
   
-  const startFormatted = startAtDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-  const endFormatted = endAtDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  const startFormatted = formatDate(startAt);
+  const endFormatted = formatDate(endAt);
   
   const dateRange = `${startFormatted} - ${endFormatted}`;
 
@@ -270,20 +267,6 @@ const ContactBar = ({iconSrc, value}: {iconSrc: string, value: string}) => {
       </View>
     </View>
   )
-}
-
-const PDFDocument1 = () => {
-  return (
-    <Document 
-    title={`Resume | Kelvin`} 
-    author={personalData.nickname} >
-      <Page size="A4" style={styles.page}>
-          <View style={styles.row}>
-            <Text>asd</Text>
-          </View> 
-      </Page>
-    </Document>
-  );
 }
 
 const PDFDocument = () => {
@@ -343,10 +326,10 @@ const PDFDocument = () => {
                 />
               ))}
 
-              {/* <MarkdownBar 
+              <MarkdownBar 
                 portfolioUrl={personalData.portfolio.url}
                 modifiedDate={personalData.ModifiedDate}
-              /> */}
+              />
               
             </View>
     
