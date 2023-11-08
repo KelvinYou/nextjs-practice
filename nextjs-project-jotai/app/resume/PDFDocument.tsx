@@ -1,5 +1,5 @@
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet, Font, Image, Link } from '@react-pdf/renderer';
+import ReactPDF, { Document, Page, Text, View, StyleSheet, Font, Image, Link } from '@react-pdf/renderer';
 
 import { personalData } from '@/data/personalData';
 
@@ -236,9 +236,9 @@ const ScoreBar = ({name, score}: {name: string, score: number}) => {
       <View style={styles.scoreView}>
         {Array.from({ length: 5 }).map((_, index) => (
           index <= score - 1? 
-          <View style={[styles.scoreItem, {backgroundColor: "lightgrey"}]} />
+          <View key={index} style={[styles.scoreItem, {backgroundColor: "lightgrey"}]} />
           : 
-          <View style={[styles.scoreItem, {backgroundColor: "grey"}]} />
+          <View key={index} style={[styles.scoreItem, {backgroundColor: "grey"}]} />
         ))}
       </View>
     </View>
@@ -272,153 +272,173 @@ const ContactBar = ({iconSrc, value}: {iconSrc: string, value: string}) => {
   )
 }
 
+const PDFDocument1 = () => {
+  return (
+    <Document 
+    title={`Resume | Kelvin`} 
+    author={personalData.nickname} >
+      <Page size="A4" style={styles.page}>
+          <View style={styles.row}>
+            <Text>asd</Text>
+          </View> 
+      </Page>
+    </Document>
+  );
+}
+
 const PDFDocument = () => {
   return (
     <Document 
     title={`Resume | Kelvin`} 
     author={personalData.nickname} >
       <Page size="A4" style={styles.page}>
-        <View style={styles.row}>
-          <View style={styles.leftColumn}>
-            <View style={styles.profileImg}>
-              <Image src="assets/images/demo.jpg" style={styles.pic} />
+          <View style={styles.row}>
+            <View style={styles.leftColumn}>
+              <View style={styles.profileImg}>
+                <Image src="assets/images/demo.jpg" style={styles.pic} />
+              </View>
+
+              <TitleBar title="Contact" isLeft={true}/>
+              {personalData.contacts.map((contact, index) => (
+                <ContactBar 
+                  key={index + contact.type}
+                  iconSrc={contact.icon} 
+                  value={contact.value}/>
+              ))}
+              
+              <TitleBar title="Frameworks" isLeft={true}/>
+              {personalData.programming.frameworks.map((framework, index) => (
+                <ScoreBar 
+                key={index + framework.framework}
+                name={framework.framework} 
+                score={framework.score}
+                />
+              ))}
+
+              <TitleBar title="Programming Languages" isLeft={true}/>
+              {personalData.programming.languages.map((language, index) => (
+                <ScoreBar 
+                key={index + language.language}
+                name={language.language} 
+                score={language.score}
+                />
+              ))}
+
+              <TitleBar title="Languages" isLeft={true}/>
+              {personalData.languages.map((language, index) => (
+                <ScoreBar 
+                key={index + language.language}
+                name={language.language} 
+                score={language.score}
+                />
+              ))}
+
+              <TitleBar title="Strengths" isLeft={true}/>
+              
+              {personalData.strengths.map((strength, index) => (
+                <StrengthBar 
+                  key={index + strength.strength}
+                  strength={strength.strength} 
+                  description={strength.description} 
+                />
+              ))}
+
+              {/* <MarkdownBar 
+                portfolioUrl={personalData.portfolio.url}
+                modifiedDate={personalData.ModifiedDate}
+              /> */}
+              
             </View>
+    
+            <View style={styles.rightColumn}>
+              <Text style={styles.fullname}>{personalData.fullname}</Text>
+              <Text style={styles.role}>{personalData.roles[0]}</Text>
+              <TitleBar title="Work Experiences" isLeft={false}/>
+              {personalData.workExps.map((workExp, index) => (
+                <View key={index} style={{ marginBottom: 10 }}>
+                  <Text style={styles.workRole}>{workExp.role}</Text>
 
-            <TitleBar title="Contact" isLeft={true}/>
-            {personalData.contacts.map((contact, index) => (
-              <ContactBar 
-                key={index + contact.type}
-                iconSrc={contact.icon} 
-                value={contact.value}/>
-            ))}
-            
-            <TitleBar title="Frameworks" isLeft={true}/>
-            {personalData.programming.frameworks.map((framework, index) => (
-              <ScoreBar 
-              key={index + framework.framework}
-              name={framework.framework} 
-              score={framework.score}
-              />
-            ))}
-
-            <TitleBar title="Programming Languages" isLeft={true}/>
-            {personalData.programming.languages.map((language, index) => (
-              <ScoreBar 
-              key={index + language.language}
-              name={language.language} 
-              score={language.score}
-              />
-            ))}
-
-            <TitleBar title="Languages" isLeft={true}/>
-            {personalData.languages.map((language, index) => (
-              <ScoreBar 
-              key={index + language.language}
-              name={language.language} 
-              score={language.score}
-              />
-            ))}
-
-            <TitleBar title="Strengths" isLeft={true}/>
-            
-            {personalData.strengths.map((strength, index) => (
-              <StrengthBar 
-                key={index + strength.strength}
-                strength={strength.strength} 
-                description={strength.description} 
-              />
-            ))}
-
-            {/* <MarkdownBar 
-              portfolioUrl={personalData.portfolio.url}
-              modifiedDate={personalData.ModifiedDate}
-            /> */}
-            
-          </View>
-  
-          <View style={styles.rightColumn}>
-            <Text style={styles.fullname}>{personalData.fullname}</Text>
-            <Text style={styles.role}>{personalData.roles[0]}</Text>
-            <TitleBar title="Work Experiences" isLeft={false}/>
-            {personalData.workExps.map((workExp, index) => (
-              <View key={index} style={{ marginBottom: 10 }}>
-                <Text style={styles.workRole}>{workExp.role}</Text>
-
-                <View style={styles.workSecondRow}>
-                  {workExp.companyUrl ?
-                    <Link style={styles.workCompanyName} src={workExp.companyUrl}>
+                  <View style={styles.workSecondRow}>
+                    {workExp.companyUrl ?
+                      <Link style={styles.workCompanyName} src={workExp.companyUrl}>
+                        <Text style={styles.workCompanyName}>
+                          {workExp.companyName}
+                        </Text>
+                      </Link>
+                      :
                       <Text style={styles.workCompanyName}>
                         {workExp.companyName}
                       </Text>
-                    </Link>
-                    :
-                    <Text style={styles.workCompanyName}>
-                      {workExp.companyName}
+                    }
+                    <DateRange startAt={workExp.startAt} endAt={workExp.endAt} />
+                  </View>
+                  
+                  {workExp.points.map((point, index) => (
+                    <Text key={index} style={styles.workDescription}>
+                      * {point}
                     </Text>
-                  }
-                  <DateRange startAt={workExp.startAt} endAt={workExp.endAt} />
+                  ))}
+                  
                 </View>
-                
-                
-                <Text style={styles.workDescription}>{workExp.description}</Text>
-              </View>
-            ))}
-  
-            <TitleBar title="Educations" isLeft={false}/>
-            {personalData.educations.map((education, index) => (
-              <View key={index} style={{ marginBottom: 10 }}>
-                <Text style={styles.workRole}>{education.title}</Text>
-                  {education.schoolUrl ?
-                    <Link style={styles.workCompanyName} src={education.schoolUrl}>
+              ))}
+    
+              <TitleBar title="Educations" isLeft={false}/>
+              {personalData.educations.map((education, index) => (
+                <View key={index} style={{ marginBottom: 10 }}>
+                  <Text style={styles.workRole}>{education.title}</Text>
+                    {education.schoolUrl ?
+                      <Link style={styles.workCompanyName} src={education.schoolUrl}>
+                        <Text style={styles.workCompanyName}>
+                          {education.school}
+                        </Text>
+                      </Link>
+                      :
                       <Text style={styles.workCompanyName}>
                         {education.school}
+                      </Text>
+                    }
+
+                    
+                    
+                    <DateRange startAt={education.startAt} endAt={education.endAt} />
+
+                    {education.grade && 
+                      <Text style={styles.workCompanyName}>
+                        CGPA: {education.grade}
+                      </Text>
+                    }
+                  <Text style={styles.workDescription}>{education.description}</Text>
+                </View>
+              ))}
+
+              <TitleBar title="Co-curicular Activities" isLeft={false}/>
+              {personalData.cocuriculars.map((cocuricular, index) => (
+                <View key={index} style={{ marginBottom: 10 }}>
+                  <Text style={styles.workRole}>{cocuricular.title}</Text>
+                    {cocuricular.schoolUrl ?
+                    <Link style={styles.workCompanyName} src={cocuricular.schoolUrl}>
+                      <Text style={styles.workCompanyName}>
+                        {cocuricular.school}
                       </Text>
                     </Link>
                     :
                     <Text style={styles.workCompanyName}>
-                      {education.school}
-                    </Text>
-                  }
-
-                  
-                  
-                  <DateRange startAt={education.startAt} endAt={education.endAt} />
-
-                  {education.grade && 
-                    <Text style={styles.workCompanyName}>
-                      CGPA: {education.grade}
-                    </Text>
-                  }
-                <Text style={styles.workDescription}>{education.description}</Text>
-              </View>
-            ))}
-
-            <TitleBar title="Co-curicular Activities" isLeft={false}/>
-            {personalData.cocuriculars.map((cocuricular, index) => (
-              <View key={index} style={{ marginBottom: 10 }}>
-                <Text style={styles.workRole}>{cocuricular.title}</Text>
-                  {cocuricular.schoolUrl ?
-                  <Link style={styles.workCompanyName} src={cocuricular.schoolUrl}>
-                    <Text style={styles.workCompanyName}>
                       {cocuricular.school}
                     </Text>
-                  </Link>
-                  :
-                  <Text style={styles.workCompanyName}>
-                    {cocuricular.school}
-                  </Text>
-                }
+                  }
 
-                <DateRange startAt={cocuricular.startAt} endAt={cocuricular.endAt} />
-                
-                <Text style={styles.workDescription}>{cocuricular.description}</Text>
-              </View>
-            ))}
-          </View>
-        </View>
+                  <DateRange startAt={cocuricular.startAt} endAt={cocuricular.endAt} />
+                  
+                  <Text style={styles.workDescription}>{cocuricular.description}</Text>
+                </View>
+              ))}
+            </View>
+          </View> 
       </Page>
     </Document>
   );
 }
+
+// ReactPDF.render(<PDFDocument />, `example.pdf`);
 
 export default PDFDocument;

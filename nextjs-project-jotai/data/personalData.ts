@@ -85,12 +85,16 @@ export const personalData = {
   },
   workExps: [
     {
-      role: "Software Engineer (Intern)",
+      role: "Java Software Engineering Intern",
       companyName: "Finexus International Sdn Bhd",
       companyUrl: "https://www.finexusgroup.com/",
       startAt: "2023-2-1",
       endAt: "2023-7-31",
-      description: "In the banking industry, we supply our regulatory solutions and assist many banks in meeting their regulatory reporting compliances to the Central Bank. The Central Bank will data-mine the tons of financial data collected from the industry and in-turn churn out meaningful information to formulate sound financial policies for the nation.",
+      description: "",
+      points: [
+        "Focused on Java-based project maintenance, utilizing JSP and Tomcat. Conducted R&D for innovative features such as reusable custom dialogs and remote log file retrieval. ", 
+        "Conducted comprehensive testing and documentation for quality assurance.",
+      ],
       skills: ["ExpressJS", "ReactJS", "NextJS"]
     },
     {
@@ -99,7 +103,11 @@ export const personalData = {
       companyUrl: "https://www.techtics.io/",
       startAt: "2020-10-1",
       endAt: "2021-1-31",
-      description: "Techtics is an IT software house specialising in blockchain technology to provide new perspective & technologies to transform industries and business. Start from understanding & ideas to capital-raising, system building, creative designing and implementation.",
+      description: "",
+      points: [
+        "Revitalized project's frontend using ReactJS for enhanced maintenance, modernization, and dynamic website capabilities.",
+        "Developed a cutting-edge blockchain application utilizing ReactJS and Solidity to seamlessly integrate smart contracts with MetaMask for secure and streamlined transactions."
+      ],
       skills: ["ExpressJS", "ReactJS", "Laravel"]
     }
   ],
@@ -110,7 +118,7 @@ export const personalData = {
       endAt: "2023-7-31",
       school: "Tunku Abdul Rahman University of Management and Technology",
       schoolUrl: "https://tarc.edu.my/",
-      grade: 3.72,
+      grade: 3.7200,
       description: "Taken core courses for software development such as Data Structure and Algorithm, Human-Computer Interaction, Agile Methodology Development. Exposed to technologies such as Mobile Application Development, Graphics Programming, Data Science through elective courses.",
     },
     {
@@ -119,7 +127,7 @@ export const personalData = {
       endAt: "2021-5-31",
       school: "Tunku Abdul Rahman University of Management and Technology",
       schoolUrl: "https://tarc.edu.my/",
-      grade: 3.60,
+      grade: 3.7439,
       description: "Basic Programming Concepts through various languages such as Object-Oriented Programming in Java, C, and Assembly Language. Mathematics courses included Algebra, Calculus, Statistics, Discrete Math."
     },
     {

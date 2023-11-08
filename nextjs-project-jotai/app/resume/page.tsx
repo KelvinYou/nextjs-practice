@@ -1,18 +1,16 @@
-"use client";
-import PDFDocument from "@/components/resume/PDFDocument";
-import { useDocumentTitle } from "@/hooks";
-import ReactPDF from "@react-pdf/renderer";
+import PDFDocument from "@/app/resume/PDFDocument";
+import ReactPDF, { PDFViewer } from "@react-pdf/renderer";
+import dynamic from "next/dynamic";
 import React from "react";
+import { Document, Page } from "react-pdf";
+import MyResume from "./MyResume";
 
 const Resume = () => {
-  useDocumentTitle("Resume | Kelvin");
 
   return (
     <>
-      <div className="pdf-viewer-container">
-        <ReactPDF.PDFViewer className="pdf-viewer">
-          <PDFDocument />
-        </ReactPDF.PDFViewer>
+      <div className="h-screen">
+        <MyResume />
       </div>
     </>
   )

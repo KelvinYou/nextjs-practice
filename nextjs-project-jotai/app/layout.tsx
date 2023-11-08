@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import './globals.css'
 import { Quicksand } from 'next/font/google'
+import ReactDOM from 'react-dom'
 
 const quicksand = Quicksand({ subsets: ['latin'] })
 
